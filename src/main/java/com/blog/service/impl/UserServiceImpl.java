@@ -1,5 +1,7 @@
 package com.blog.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,8 +40,12 @@ public class UserServiceImpl implements UserService {
 		UserExample userExample = new UserExample();
 		Criteria criteria = userExample.createCriteria();
 		criteria.andUsernameEqualTo(username);
-		
-		return userMapper.selectByExample(userExample).get(0);
+//System.out.println("size:" + userMapper.selectByExample(userExample).size());
+		List<User> list = userMapper.selectByExample(userExample);
+		if (list.size() > 0)
+			return list.get(0);
+		else
+			return null;
 	}
 
 }

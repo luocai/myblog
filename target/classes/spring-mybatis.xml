@@ -16,20 +16,33 @@
 	<context:property-placeholder location="classpath:jdbc.properties"/>
 	
 	<bean id = "dataSource" class = "com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-	<property name="driverClassName" value = "${jdbc.driver}"/>
-	<property name="url" value = "${jdbc.url}"/>
-	<property name="username" value = "${jdbc.user}"/>
-	<property name="password" value = "${jdbc.pass}" />
+		<property name="driverClassName" value = "${jdbc.driver}"/>
+		<property name="url" value = "${jdbc.url}"/>
+		<property name="username" value = "${jdbc.user}"/>
+		<property name="password" value = "${jdbc.pass}" />
 	</bean>
 	
 	<bean id = "sqlSessionFactory" class = "org.mybatis.spring.SqlSessionFactoryBean">
-	<property name="dataSource" ref = "dataSource"/>
-	<property name="typeAliasesPackage" value = "com.blog.pojo"/>
-	<property name="mapperLocations" value = "classpath:com/blog/mapper/*.xml"/>
+		<property name="dataSource" ref = "dataSource"/>
+		<property name="typeAliasesPackage" value = "com.blog.pojo"/>
+		<property name="mapperLocations" value = "classpath:com/blog/mapper/*.xml"/>
+		<!--分页插件配置  -->
+		<property name="plugins">
+            <array>
+              <bean class="com.github.pagehelper.PageInterceptor">
+                <property name="properties">
+                  <!--使用下面的方式配置参数，一行配置一个 -->
+                  <value>
+                  	params=value1
+                  </value>
+                </property>
+              </bean>
+            </array>
+          </property>   
 	</bean>
 	
 	<bean class = "org.mybatis.spring.mapper.MapperScannerConfigurer">
-	<property name="sqlSessionFactoryBeanName" value = "sqlSessionFactory" />
-	<property name="basePackage" value = "com.blog.mapper"/>
+		<property name="sqlSessionFactoryBeanName" value = "sqlSessionFactory" />
+		<property name="basePackage" value = "com.blog.mapper"/>
 	</bean>
 </beans>

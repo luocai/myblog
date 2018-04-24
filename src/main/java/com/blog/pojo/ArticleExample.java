@@ -235,63 +235,63 @@ public class ArticleExample {
             return (Criteria) this;
         }
 
-        public Criteria andPublicTimeIsNull() {
-            addCriterion("public_time is null");
+        public Criteria andPublishTimeIsNull() {
+            addCriterion("publish_time is null");
             return (Criteria) this;
         }
 
-        public Criteria andPublicTimeIsNotNull() {
-            addCriterion("public_time is not null");
+        public Criteria andPublishTimeIsNotNull() {
+            addCriterion("publish_time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPublicTimeEqualTo(Date value) {
-            addCriterion("public_time =", value, "publicTime");
+        public Criteria andPublishTimeEqualTo(Date value) {
+            addCriterion("publish_time =", value, "publishTime");
             return (Criteria) this;
         }
 
-        public Criteria andPublicTimeNotEqualTo(Date value) {
-            addCriterion("public_time <>", value, "publicTime");
+        public Criteria andPublishTimeNotEqualTo(Date value) {
+            addCriterion("publish_time <>", value, "publishTime");
             return (Criteria) this;
         }
 
-        public Criteria andPublicTimeGreaterThan(Date value) {
-            addCriterion("public_time >", value, "publicTime");
+        public Criteria andPublishTimeGreaterThan(Date value) {
+            addCriterion("publish_time >", value, "publishTime");
             return (Criteria) this;
         }
 
-        public Criteria andPublicTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("public_time >=", value, "publicTime");
+        public Criteria andPublishTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("publish_time >=", value, "publishTime");
             return (Criteria) this;
         }
 
-        public Criteria andPublicTimeLessThan(Date value) {
-            addCriterion("public_time <", value, "publicTime");
+        public Criteria andPublishTimeLessThan(Date value) {
+            addCriterion("publish_time <", value, "publishTime");
             return (Criteria) this;
         }
 
-        public Criteria andPublicTimeLessThanOrEqualTo(Date value) {
-            addCriterion("public_time <=", value, "publicTime");
+        public Criteria andPublishTimeLessThanOrEqualTo(Date value) {
+            addCriterion("publish_time <=", value, "publishTime");
             return (Criteria) this;
         }
 
-        public Criteria andPublicTimeIn(List<Date> values) {
-            addCriterion("public_time in", values, "publicTime");
+        public Criteria andPublishTimeIn(List<Date> values) {
+            addCriterion("publish_time in", values, "publishTime");
             return (Criteria) this;
         }
 
-        public Criteria andPublicTimeNotIn(List<Date> values) {
-            addCriterion("public_time not in", values, "publicTime");
+        public Criteria andPublishTimeNotIn(List<Date> values) {
+            addCriterion("publish_time not in", values, "publishTime");
             return (Criteria) this;
         }
 
-        public Criteria andPublicTimeBetween(Date value1, Date value2) {
-            addCriterion("public_time between", value1, value2, "publicTime");
+        public Criteria andPublishTimeBetween(Date value1, Date value2) {
+            addCriterion("publish_time between", value1, value2, "publishTime");
             return (Criteria) this;
         }
 
-        public Criteria andPublicTimeNotBetween(Date value1, Date value2) {
-            addCriterion("public_time not between", value1, value2, "publicTime");
+        public Criteria andPublishTimeNotBetween(Date value1, Date value2) {
+            addCriterion("publish_time not between", value1, value2, "publishTime");
             return (Criteria) this;
         }
 
@@ -355,63 +355,123 @@ public class ArticleExample {
             return (Criteria) this;
         }
 
-        public Criteria andCatalogIdIsNull() {
-            addCriterion("catalog_id is null");
+        public Criteria andCategoryIsNull() {
+            addCriterion("category is null");
             return (Criteria) this;
         }
 
-        public Criteria andCatalogIdIsNotNull() {
-            addCriterion("catalog_id is not null");
+        public Criteria andCategoryIsNotNull() {
+            addCriterion("category is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCatalogIdEqualTo(Integer value) {
-            addCriterion("catalog_id =", value, "catalogId");
+        public Criteria andCategoryEqualTo(Integer value) {
+            addCriterion("category =", value, "category");
             return (Criteria) this;
         }
 
-        public Criteria andCatalogIdNotEqualTo(Integer value) {
-            addCriterion("catalog_id <>", value, "catalogId");
+        public Criteria andCategoryNotEqualTo(Integer value) {
+            addCriterion("category <>", value, "category");
             return (Criteria) this;
         }
 
-        public Criteria andCatalogIdGreaterThan(Integer value) {
-            addCriterion("catalog_id >", value, "catalogId");
+        public Criteria andCategoryGreaterThan(Integer value) {
+            addCriterion("category >", value, "category");
             return (Criteria) this;
         }
 
-        public Criteria andCatalogIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("catalog_id >=", value, "catalogId");
+        public Criteria andCategoryGreaterThanOrEqualTo(Integer value) {
+            addCriterion("category >=", value, "category");
             return (Criteria) this;
         }
 
-        public Criteria andCatalogIdLessThan(Integer value) {
-            addCriterion("catalog_id <", value, "catalogId");
+        public Criteria andCategoryLessThan(Integer value) {
+            addCriterion("category <", value, "category");
             return (Criteria) this;
         }
 
-        public Criteria andCatalogIdLessThanOrEqualTo(Integer value) {
-            addCriterion("catalog_id <=", value, "catalogId");
+        public Criteria andCategoryLessThanOrEqualTo(Integer value) {
+            addCriterion("category <=", value, "category");
             return (Criteria) this;
         }
 
-        public Criteria andCatalogIdIn(List<Integer> values) {
-            addCriterion("catalog_id in", values, "catalogId");
+        public Criteria andCategoryIn(List<Integer> values) {
+            addCriterion("category in", values, "category");
             return (Criteria) this;
         }
 
-        public Criteria andCatalogIdNotIn(List<Integer> values) {
-            addCriterion("catalog_id not in", values, "catalogId");
+        public Criteria andCategoryNotIn(List<Integer> values) {
+            addCriterion("category not in", values, "category");
             return (Criteria) this;
         }
 
-        public Criteria andCatalogIdBetween(Integer value1, Integer value2) {
-            addCriterion("catalog_id between", value1, value2, "catalogId");
+        public Criteria andCategoryBetween(Integer value1, Integer value2) {
+            addCriterion("category between", value1, value2, "category");
             return (Criteria) this;
         }
 
-        public Criteria andCatalogIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("catalog_id not between", value1, value2, "catalogId");
+        public Criteria andCategoryNotBetween(Integer value1, Integer value2) {
+            addCriterion("category not between", value1, value2, "category");
+            return (Criteria) this;
+        }
+
+        public Criteria andClickIsNull() {
+            addCriterion("click is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andClickIsNotNull() {
+            addCriterion("click is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andClickEqualTo(Integer value) {
+            addCriterion("click =", value, "click");
+            return (Criteria) this;
+        }
+
+        public Criteria andClickNotEqualTo(Integer value) {
+            addCriterion("click <>", value, "click");
+            return (Criteria) this;
+        }
+
+        public Criteria andClickGreaterThan(Integer value) {
+            addCriterion("click >", value, "click");
+            return (Criteria) this;
+        }
+
+        public Criteria andClickGreaterThanOrEqualTo(Integer value) {
+            addCriterion("click >=", value, "click");
+            return (Criteria) this;
+        }
+
+        public Criteria andClickLessThan(Integer value) {
+            addCriterion("click <", value, "click");
+            return (Criteria) this;
+        }
+
+        public Criteria andClickLessThanOrEqualTo(Integer value) {
+            addCriterion("click <=", value, "click");
+            return (Criteria) this;
+        }
+
+        public Criteria andClickIn(List<Integer> values) {
+            addCriterion("click in", values, "click");
+            return (Criteria) this;
+        }
+
+        public Criteria andClickNotIn(List<Integer> values) {
+            addCriterion("click not in", values, "click");
+            return (Criteria) this;
+        }
+
+        public Criteria andClickBetween(Integer value1, Integer value2) {
+            addCriterion("click between", value1, value2, "click");
+            return (Criteria) this;
+        }
+
+        public Criteria andClickNotBetween(Integer value1, Integer value2) {
+            addCriterion("click not between", value1, value2, "click");
             return (Criteria) this;
         }
     }

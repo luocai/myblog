@@ -7,13 +7,42 @@ public class Article {
 
     private String articleTitle;
 
-    private Date publicTime;
+    private Date publishTime;
 
     private Integer writerId;
 
-    private Integer catalogId;
+    private Integer category;
 
-    public Integer getArticleId() {
+    private Integer click;
+    
+    private String articleContent;
+    
+    private String summary;
+
+    @Override
+	public String toString() {
+		return "Article [articleId=" + articleId + ", articleTitle=" + articleTitle + ", publishTime=" + publishTime
+				+ ", writerId=" + writerId + ", category=" + category + ", click=" + click + ", articleContent="
+				+ articleContent + ", summary=" + summary + "]";
+	}
+
+	public String getArticleContent() {
+		return articleContent;
+	}
+
+	public void setArticleContent(String articleContent) {
+		this.articleContent = articleContent;
+	}
+
+	public String getSummary() {
+		return summary;
+	}
+
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+
+	public Integer getArticleId() {
         return articleId;
     }
 
@@ -29,12 +58,12 @@ public class Article {
         this.articleTitle = articleTitle == null ? null : articleTitle.trim();
     }
 
-    public Date getPublicTime() {
-        return publicTime;
+    public Date getPublishTime() {
+        return publishTime;
     }
 
-    public void setPublicTime(Date publicTime) {
-        this.publicTime = publicTime;
+    public void setPublishTime(Date publishTime) {
+        this.publishTime = publishTime;
     }
 
     public Integer getWriterId() {
@@ -45,11 +74,19 @@ public class Article {
         this.writerId = writerId;
     }
 
-    public Integer getCatalogId() {
-        return catalogId;
+    public Integer getCategory() {
+        return category;
     }
 
-    public void setCatalogId(Integer catalogId) {
-        this.catalogId = catalogId;
+    public void setCategory(Integer category) {
+        this.category = category;
+    }
+
+    public Integer getClick() {
+        return click;
+    }
+
+    public void setClick(Integer click) {
+        this.click = click;
     }
 }

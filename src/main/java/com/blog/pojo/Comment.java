@@ -15,6 +15,8 @@ public class Comment {
 
     private String commentContent;
 
+    private String userName;
+
     public Integer getCommentId() {
         return commentId;
     }
@@ -61,5 +63,13 @@ public class Comment {
 
     public void setCommentContent(String commentContent) {
         this.commentContent = commentContent == null ? null : commentContent.trim();
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName == null ? null : userName.trim();
     }
 }

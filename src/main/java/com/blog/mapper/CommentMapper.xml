@@ -8,6 +8,7 @@
     <result column="user_ip" jdbcType="VARCHAR" property="userIp" />
     <result column="article_id" jdbcType="INTEGER" property="articleId" />
     <result column="comment_content" jdbcType="VARCHAR" property="commentContent" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    comment_id, user_id, comment_time, user_ip, article_id, comment_content
+    comment_id, user_id, comment_time, user_ip, article_id, comment_content, user_name
   </sql>
   <select id="selectByExample" parameterType="com.blog.pojo.CommentExample" resultMap="BaseResultMap">
     select
@@ -102,11 +103,11 @@
   </delete>
   <insert id="insert" parameterType="com.blog.pojo.Comment">
     insert into comment (comment_id, user_id, comment_time, 
-      user_ip, article_id, comment_content
-      )
+      user_ip, article_id, comment_content, 
+      user_name)
     values (#{commentId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{commentTime,jdbcType=TIMESTAMP}, 
-      #{userIp,jdbcType=VARCHAR}, #{articleId,jdbcType=INTEGER}, #{commentContent,jdbcType=VARCHAR}
-      )
+      #{userIp,jdbcType=VARCHAR}, #{articleId,jdbcType=INTEGER}, #{commentContent,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.blog.pojo.Comment">
     insert into comment
@@ -129,6 +130,9 @@
       <if test="commentContent != null">
         comment_content,
       </if>
+      <if test="userName != null">
+        user_name,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="commentId != null">
@@ -148,6 +152,9 @@
       </if>
       <if test="commentContent != null">
         #{commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -178,6 +185,9 @@
       <if test="record.commentContent != null">
         comment_content = #{record.commentContent,jdbcType=VARCHAR},
       </if>
+      <if test="record.userName != null">
+        user_name = #{record.userName,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -190,7 +200,8 @@
       comment_time = #{record.commentTime,jdbcType=TIMESTAMP},
       user_ip = #{record.userIp,jdbcType=VARCHAR},
       article_id = #{record.articleId,jdbcType=INTEGER},
-      comment_content = #{record.commentContent,jdbcType=VARCHAR}
+      comment_content = #{record.commentContent,jdbcType=VARCHAR},
+      user_name = #{record.userName,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -213,6 +224,9 @@
       <if test="commentContent != null">
         comment_content = #{commentContent,jdbcType=VARCHAR},
       </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
     </set>
     where comment_id = #{commentId,jdbcType=INTEGER}
   </update>
@@ -222,7 +236,8 @@
       comment_time = #{commentTime,jdbcType=TIMESTAMP},
       user_ip = #{userIp,jdbcType=VARCHAR},
       article_id = #{articleId,jdbcType=INTEGER},
-      comment_content = #{commentContent,jdbcType=VARCHAR}
+      comment_content = #{commentContent,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR}
     where comment_id = #{commentId,jdbcType=INTEGER}
   </update>
 </mapper>

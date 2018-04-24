@@ -13,4 +13,6 @@ public interface CategoryService {
 	boolean deleteCategory(Category category);
 	
 	List<Category> selectAll();
+	
+	Category selectById(Integer id);
 }

@@ -67,10 +67,8 @@ public class ArticleServiceImpl implements ArticleService {
 
 	@Override
 	public Article selectById(Integer id) {
-		ArticleExample articleExample = new ArticleExample();
-		Criteria criteria = articleExample.createCriteria();
-		criteria.andArticleIdEqualTo(id);
-		return null;
+		
+		return articleMapper.selectByPrimaryKey(id);
 	}
 
 }

@@ -4,9 +4,10 @@
   <resultMap id="BaseResultMap" type="com.blog.pojo.Article">
     <id column="article_id" jdbcType="INTEGER" property="articleId" />
     <result column="article_title" jdbcType="VARCHAR" property="articleTitle" />
-    <result column="public_time" jdbcType="TIMESTAMP" property="publicTime" />
+    <result column="publish_time" jdbcType="TIMESTAMP" property="publishTime" />
     <result column="writer_id" jdbcType="INTEGER" property="writerId" />
-    <result column="catalog_id" jdbcType="INTEGER" property="catalogId" />
+    <result column="category" jdbcType="INTEGER" property="category" />
+    <result column="click" jdbcType="INTEGER" property="click" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.blog.pojo.ArticleWithBLOBs">
     <result column="article_content" jdbcType="LONGVARCHAR" property="articleContent" />
@@ -71,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    article_id, article_title, public_time, writer_id, catalog_id
+    article_id, article_title, publish_time, writer_id, category, click
   </sql>
   <sql id="Blob_Column_List">
     article_content, summary
@@ -125,12 +126,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.blog.pojo.ArticleWithBLOBs">
-    insert into article (article_id, article_title, public_time, 
-      writer_id, catalog_id, article_content, 
-      summary)
-    values (#{articleId,jdbcType=INTEGER}, #{articleTitle,jdbcType=VARCHAR}, #{publicTime,jdbcType=TIMESTAMP}, 
-      #{writerId,jdbcType=INTEGER}, #{catalogId,jdbcType=INTEGER}, #{articleContent,jdbcType=LONGVARCHAR}, 
-      #{summary,jdbcType=LONGVARCHAR})
+    insert into article (article_id, article_title, publish_time, 
+      writer_id, category, click, 
+      article_content, summary)
+    values (#{articleId,jdbcType=INTEGER}, #{articleTitle,jdbcType=VARCHAR}, #{publishTime,jdbcType=TIMESTAMP}, 
+      #{writerId,jdbcType=INTEGER}, #{category,jdbcType=INTEGER}, #{click,jdbcType=INTEGER}, 
+      #{articleContent,jdbcType=LONGVARCHAR}, #{summary,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.blog.pojo.ArticleWithBLOBs">
     insert into article
@@ -141,14 +142,17 @@
       <if test="articleTitle != null">
         article_title,
       </if>
-      <if test="publicTime != null">
-        public_time,
+      <if test="publishTime != null">
+        publish_time,
       </if>
       <if test="writerId != null">
         writer_id,
       </if>
-      <if test="catalogId != null">
-        catalog_id,
+      <if test="category != null">
+        category,
+      </if>
+      <if test="click != null">
+        click,
       </if>
       <if test="articleContent != null">
         article_content,
@@ -164,14 +168,17 @@
       <if test="articleTitle != null">
         #{articleTitle,jdbcType=VARCHAR},
       </if>
-      <if test="publicTime != null">
-        #{publicTime,jdbcType=TIMESTAMP},
+      <if test="publishTime != null">
+        #{publishTime,jdbcType=TIMESTAMP},
       </if>
       <if test="writerId != null">
         #{writerId,jdbcType=INTEGER},
       </if>
-      <if test="catalogId != null">
-        #{catalogId,jdbcType=INTEGER},
+      <if test="category != null">
+        #{category,jdbcType=INTEGER},
+      </if>
+      <if test="click != null">
+        #{click,jdbcType=INTEGER},
       </if>
       <if test="articleContent != null">
         #{articleContent,jdbcType=LONGVARCHAR},
@@ -196,14 +203,17 @@
       <if test="record.articleTitle != null">
         article_title = #{record.articleTitle,jdbcType=VARCHAR},
       </if>
-      <if test="record.publicTime != null">
-        public_time = #{record.publicTime,jdbcType=TIMESTAMP},
+      <if test="record.publishTime != null">
+        publish_time = #{record.publishTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.writerId != null">
         writer_id = #{record.writerId,jdbcType=INTEGER},
       </if>
-      <if test="record.catalogId != null">
-        catalog_id = #{record.catalogId,jdbcType=INTEGER},
+      <if test="record.category != null">
+        category = #{record.category,jdbcType=INTEGER},
+      </if>
+      <if test="record.click != null">
+        click = #{record.click,jdbcType=INTEGER},
       </if>
       <if test="record.articleContent != null">
         article_content = #{record.articleContent,jdbcType=LONGVARCHAR},
@@ -220,9 +230,10 @@
     update article
     set article_id = #{record.articleId,jdbcType=INTEGER},
       article_title = #{record.articleTitle,jdbcType=VARCHAR},
-      public_time = #{record.publicTime,jdbcType=TIMESTAMP},
+      publish_time = #{record.publishTime,jdbcType=TIMESTAMP},
       writer_id = #{record.writerId,jdbcType=INTEGER},
-      catalog_id = #{record.catalogId,jdbcType=INTEGER},
+      category = #{record.category,jdbcType=INTEGER},
+      click = #{record.click,jdbcType=INTEGER},
       article_content = #{record.articleContent,jdbcType=LONGVARCHAR},
       summary = #{record.summary,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
@@ -233,9 +244,10 @@
     update article
     set article_id = #{record.articleId,jdbcType=INTEGER},
       article_title = #{record.articleTitle,jdbcType=VARCHAR},
-      public_time = #{record.publicTime,jdbcType=TIMESTAMP},
+      publish_time = #{record.publishTime,jdbcType=TIMESTAMP},
       writer_id = #{record.writerId,jdbcType=INTEGER},
-      catalog_id = #{record.catalogId,jdbcType=INTEGER}
+      category = #{record.category,jdbcType=INTEGER},
+      click = #{record.click,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -246,14 +258,17 @@
       <if test="articleTitle != null">
         article_title = #{articleTitle,jdbcType=VARCHAR},
       </if>
-      <if test="publicTime != null">
-        public_time = #{publicTime,jdbcType=TIMESTAMP},
+      <if test="publishTime != null">
+        publish_time = #{publishTime,jdbcType=TIMESTAMP},
       </if>
       <if test="writerId != null">
         writer_id = #{writerId,jdbcType=INTEGER},
       </if>
-      <if test="catalogId != null">
-        catalog_id = #{catalogId,jdbcType=INTEGER},
+      <if test="category != null">
+        category = #{category,jdbcType=INTEGER},
+      </if>
+      <if test="click != null">
+        click = #{click,jdbcType=INTEGER},
       </if>
       <if test="articleContent != null">
         article_content = #{articleContent,jdbcType=LONGVARCHAR},
@@ -267,9 +282,10 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.blog.pojo.ArticleWithBLOBs">
     update article
     set article_title = #{articleTitle,jdbcType=VARCHAR},
-      public_time = #{publicTime,jdbcType=TIMESTAMP},
+      publish_time = #{publishTime,jdbcType=TIMESTAMP},
       writer_id = #{writerId,jdbcType=INTEGER},
-      catalog_id = #{catalogId,jdbcType=INTEGER},
+      category = #{category,jdbcType=INTEGER},
+      click = #{click,jdbcType=INTEGER},
       article_content = #{articleContent,jdbcType=LONGVARCHAR},
       summary = #{summary,jdbcType=LONGVARCHAR}
     where article_id = #{articleId,jdbcType=INTEGER}
@@ -277,9 +293,10 @@
   <update id="updateByPrimaryKey" parameterType="com.blog.pojo.Article">
     update article
     set article_title = #{articleTitle,jdbcType=VARCHAR},
-      public_time = #{publicTime,jdbcType=TIMESTAMP},
+      publish_time = #{publishTime,jdbcType=TIMESTAMP},
       writer_id = #{writerId,jdbcType=INTEGER},
-      catalog_id = #{catalogId,jdbcType=INTEGER}
+      category = #{category,jdbcType=INTEGER},
+      click = #{click,jdbcType=INTEGER}
     where article_id = #{articleId,jdbcType=INTEGER}
   </update>
 </mapper>

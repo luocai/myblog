@@ -49,4 +49,10 @@ public class CategoryServiceImpl implements CategoryService {
 		return categoryMapper.selectByExample(categoryExample);
 	}
 
+	@Override
+	public Category selectById(Integer id) {
+		
+		return categoryMapper.selectByPrimaryKey(id);
+	}
+
 }

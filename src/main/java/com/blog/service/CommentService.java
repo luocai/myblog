@@ -1,5 +1,7 @@
 package com.blog.service;
 
+import java.util.List;
+
 import com.blog.pojo.Comment;
 
 public interface CommentService {
@@ -9,4 +11,7 @@ public interface CommentService {
 	boolean deleteComment(Comment comment);
 	
 	Comment selectCommentById(Integer id);
+	
+	List<Comment> selectByArticleId(Integer id);
+	
 }
