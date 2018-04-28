@@ -3,6 +3,7 @@ package com.blog.service;
 import java.util.List;
 
 import com.blog.pojo.Category;
+import com.blog.pojo.CategoryCustom;
 
 public interface CategoryService {
 	

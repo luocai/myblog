@@ -1,12 +1,16 @@
 package com.blog.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.blog.mapper.ArticleMapper;
 import com.blog.mapper.CategoryMapper;
 import com.blog.pojo.Category;
+import com.blog.pojo.CategoryCustom;
 import com.blog.pojo.CategoryExample;
 import com.blog.service.CategoryService;
 
@@ -15,6 +19,9 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Autowired
 	CategoryMapper categoryMapper;
+	
+	@Autowired
+	ArticleServiceImpl articleService;
 	
 	@Override
 	public boolean insertCategory(Category category) {
@@ -45,6 +52,8 @@ public class CategoryServiceImpl implements CategoryService {
 		CategoryExample categoryExample = new CategoryExample();
 		com.blog.pojo.CategoryExample.Criteria criteria= categoryExample.createCriteria();
 		criteria.andCategoryIdIsNotNull();
+		
+		
 		
 		return categoryMapper.selectByExample(categoryExample);
 	}

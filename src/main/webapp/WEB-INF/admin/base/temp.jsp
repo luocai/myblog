@@ -12,14 +12,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <title>诸葛财财博客的后台 <rapid:block name="title"></rapid:block></title>
-  
+  <!-- 引入layui -->
   <script src="${APP_PATH }/static/layui/layui.js"></script>
   <link rel="stylesheet" href="${APP_PATH }/static/layui/css/layui.css">
   
   <!-- 引入bootstrap和jQuery -->
-  <link rel="stylesheet" href="${APP_PATH }/static/css/bootstrap.min.css">
+<%--   <link rel="stylesheet" href="${APP_PATH }/static/css/bootstrap.min.css">
   <script src="${APP_PATH }/static/js/jquery-3.2.1.min.js"></script>
-   <script src="${APP_PATH }/static/js/bootstrap.min.js"></script>
+   <script src="${APP_PATH }/static/js/bootstrap.min.js"></script> --%>
   
   <rapid:block name="header-style"></rapid:block>
     <rapid:block name="header-script"></rapid:block>
@@ -66,7 +66,7 @@
           <dl class="layui-nav-child">
             <dd><a href="articleList">全部博文</a></dd>
             <dd><a href="write">写博文</a></dd>
-            <dd><a href="javascript:;">分类管理</a></dd>
+            <dd><a href="categoryList">分类管理</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
@@ -77,12 +77,13 @@
           
           </dl>
         </li>
-        <li class="layui-nav-item"><a href="">用户管理</a></li>
-       	<dl class="layui-nav-child">
+        <li class="layui-nav-item"><a href="">用户管理</a>
+       		<dl class="layui-nav-child">
             <dd><a href="javascript:;">所有用户</a></dd>
             <dd><a href="javascript:;"></a></dd>
           
           </dl>
+         </li>
       </ul>
     </div>
   </div>
@@ -91,19 +92,20 @@
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
             <rapid:block name="content">
-             <button class="btn btn-primary">按钮</button>
+
             </rapid:block>
         </div>
     </div>
   
 </div>
 
+<rapid:block name="footer-script">
+
+</rapid:block>
 <script>
-//JavaScript代码区域
-layui.use('element', function(){
-  var element = layui.element;
-  
-});
+    //给文本编辑器的iframe引入代码高亮的css
+    $("iframe").contents().find("head").append("<link rel=\"stylesheet\" href=\"/css/highlight.css\">\n");
+
 </script>
 </body>
 </html>

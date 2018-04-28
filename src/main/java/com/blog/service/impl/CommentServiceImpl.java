@@ -43,6 +43,22 @@ public class CommentServiceImpl implements CommentService {
 		return commentMapper.selectByExample(commentExample);
 	}
 
+	@Override
+	public List<Comment> selectAll() {
+		
+		CommentExample commentExample = new CommentExample();
+		Criteria criteria = commentExample.createCriteria();
+		criteria.andCommentIdIsNotNull();
+		
+		return commentMapper.selectByExample(commentExample);
+	}
+
+	@Override
+	public boolean updateComment(Comment comment) {
+		
+		return commentMapper.updateByPrimaryKey(comment) > 0;
+	}
+
 //	@Override
 //	public List<Comment> selectAll() {
 //		CommentExample commentExample = new CommentExample();

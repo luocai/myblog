@@ -29,7 +29,8 @@ public class CommentController {
 		comment.setCommentTime(new Date());
 System.out.println(request.getParameter("userName"));
 		comment.setUserName(request.getParameter("userName"));
-		comment.setUserIp(request.getParameter("userIp"));
+		comment.setReplyState(0);
+
 		
 		boolean flag = commentService.insertComment(comment);
 		HashMap<String, String> res = new HashMap<String, String>();

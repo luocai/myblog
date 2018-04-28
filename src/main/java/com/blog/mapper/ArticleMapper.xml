@@ -8,6 +8,7 @@
     <result column="writer_id" jdbcType="INTEGER" property="writerId" />
     <result column="category" jdbcType="INTEGER" property="category" />
     <result column="click" jdbcType="INTEGER" property="click" />
+    <result column="state" jdbcType="INTEGER" property="state" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.blog.pojo.ArticleWithBLOBs">
     <result column="article_content" jdbcType="LONGVARCHAR" property="articleContent" />
@@ -72,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    article_id, article_title, publish_time, writer_id, category, click
+    article_id, article_title, publish_time, writer_id, category, click, state
   </sql>
   <sql id="Blob_Column_List">
     article_content, summary
@@ -128,10 +129,12 @@
   <insert id="insert" parameterType="com.blog.pojo.ArticleWithBLOBs">
     insert into article (article_id, article_title, publish_time, 
       writer_id, category, click, 
-      article_content, summary)
+      state, article_content, summary
+      )
     values (#{articleId,jdbcType=INTEGER}, #{articleTitle,jdbcType=VARCHAR}, #{publishTime,jdbcType=TIMESTAMP}, 
       #{writerId,jdbcType=INTEGER}, #{category,jdbcType=INTEGER}, #{click,jdbcType=INTEGER}, 
-      #{articleContent,jdbcType=LONGVARCHAR}, #{summary,jdbcType=LONGVARCHAR})
+      #{state,jdbcType=INTEGER}, #{articleContent,jdbcType=LONGVARCHAR}, #{summary,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.blog.pojo.ArticleWithBLOBs">
     insert into article
@@ -153,6 +156,9 @@
       </if>
       <if test="click != null">
         click,
+      </if>
+      <if test="state != null">
+        state,
       </if>
       <if test="articleContent != null">
         article_content,
@@ -179,6 +185,9 @@
       </if>
       <if test="click != null">
         #{click,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
       </if>
       <if test="articleContent != null">
         #{articleContent,jdbcType=LONGVARCHAR},
@@ -215,6 +224,9 @@
       <if test="record.click != null">
         click = #{record.click,jdbcType=INTEGER},
       </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
       <if test="record.articleContent != null">
         article_content = #{record.articleContent,jdbcType=LONGVARCHAR},
       </if>
@@ -234,6 +246,7 @@
       writer_id = #{record.writerId,jdbcType=INTEGER},
       category = #{record.category,jdbcType=INTEGER},
       click = #{record.click,jdbcType=INTEGER},
+      state = #{record.state,jdbcType=INTEGER},
       article_content = #{record.articleContent,jdbcType=LONGVARCHAR},
       summary = #{record.summary,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
@@ -247,7 +260,8 @@
       publish_time = #{record.publishTime,jdbcType=TIMESTAMP},
       writer_id = #{record.writerId,jdbcType=INTEGER},
       category = #{record.category,jdbcType=INTEGER},
-      click = #{record.click,jdbcType=INTEGER}
+      click = #{record.click,jdbcType=INTEGER},
+      state = #{record.state,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -270,6 +284,9 @@
       <if test="click != null">
         click = #{click,jdbcType=INTEGER},
       </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
       <if test="articleContent != null">
         article_content = #{articleContent,jdbcType=LONGVARCHAR},
       </if>
@@ -286,6 +303,7 @@
       writer_id = #{writerId,jdbcType=INTEGER},
       category = #{category,jdbcType=INTEGER},
       click = #{click,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER},
       article_content = #{articleContent,jdbcType=LONGVARCHAR},
       summary = #{summary,jdbcType=LONGVARCHAR}
     where article_id = #{articleId,jdbcType=INTEGER}
@@ -296,7 +314,8 @@
       publish_time = #{publishTime,jdbcType=TIMESTAMP},
       writer_id = #{writerId,jdbcType=INTEGER},
       category = #{category,jdbcType=INTEGER},
-      click = #{click,jdbcType=INTEGER}
+      click = #{click,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER}
     where article_id = #{articleId,jdbcType=INTEGER}
   </update>
 </mapper>

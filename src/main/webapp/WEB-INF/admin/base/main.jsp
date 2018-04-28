@@ -16,10 +16,7 @@
   <script src="${APP_PATH }/static/layui/layui.js"></script>
   <link rel="stylesheet" href="${APP_PATH }/static/layui/css/layui.css">
   
-  <!-- 引入bootstrap和jQuery -->
-  <link rel="stylesheet" href="${APP_PATH }/static/css/bootstrap.min.css">
-  <script src="${APP_PATH }/static/js/jquery-3.2.1.min.js"></script>
-   <script src="${APP_PATH }/static/js/bootstrap.min.js"></script>
+  
   
   <rapid:block name="header-style"></rapid:block>
     <rapid:block name="header-script"></rapid:block>
@@ -91,7 +88,7 @@
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
             <rapid:block name="content">
-             <button class="btn btn-primary">按钮</button>
+            
             </rapid:block>
         </div>
     </div>

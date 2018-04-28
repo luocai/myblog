@@ -17,4 +17,10 @@ public interface ArticleService {
 	/*List<Article> selectByKeyWords(String keywords);*/
 	Article selectById(Integer id);
 	
+	List<Article> selectByTitle(String title);
+	
+	List<Article> selectPublished();
+	List<Article> selectPublishing();
+	
+	List<Article> seletcByCategory(Integer categoryId);
 }

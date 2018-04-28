@@ -9,15 +9,29 @@
     <rapid:override name="title">
         - 新建文章
     </rapid:override>
+<rapid:override name="header-style">
+    <style>
+	.breadcrumb {
+	    padding: 8px 15px;
+	    margin-bottom: 20px;
+	    margin-left:-15px;
+	    margin-right:15px;
+	    list-style: none;
+	    background-color: #f5f5f5;
+	    border-radius: 4px;
+   }
+
+    </style>
+</rapid:override>
 
 <rapid:override name="content">
-    <blockquote class="layui-elem-quote">
-         <span class="layui-breadcrumb" lay-separator="/">
-              <a href="/admin/main">首页</a>
-              <a href="/admin/articleList">文章列表</a>
-              <a><cite>添加文章</cite></a>
-        </span>
-    </blockquote>
+
+  <div class="container">  
+        <ul class="breadcrumb">  
+            <li><a href="main"> 首页</a></li>  
+            <li class="active"><a href="#">新建文章</a></li>  
+        </ul>  
+   </div> 
 
 
 
@@ -53,8 +67,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label">状态</label>
             <div class="layui-input-block">
-                <input type="radio" name="articleStatus" value="1" title="发布" checked>
-                <input type="radio" name="articleStatus" value="0" title="草稿" >
+                <input type="radio" name="state" value="1" title="发布" checked>
+                <input type="radio" name="state" value="0" title="草稿" >
             </div>
         </div>
         <div class="layui-form-item">

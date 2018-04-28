@@ -14,6 +14,8 @@ public class Article {
     private Integer category;
 
     private Integer click;
+
+    private Integer state;
     
     private String articleContent;
     
@@ -22,11 +24,19 @@ public class Article {
     @Override
 	public String toString() {
 		return "Article [articleId=" + articleId + ", articleTitle=" + articleTitle + ", publishTime=" + publishTime
-				+ ", writerId=" + writerId + ", category=" + category + ", click=" + click + ", articleContent="
-				+ articleContent + ", summary=" + summary + "]";
+				+ ", writerId=" + writerId + ", category=" + category + ", click=" + click + ", state=" + state
+				+ ", articleContent=" + articleContent + ", summary=" + summary + "]";
 	}
 
-	public String getArticleContent() {
+	public Integer getArticleId() {
+        return articleId;
+    }
+
+    public void setArticleId(Integer articleId) {
+        this.articleId = articleId;
+    }
+
+    public String getArticleContent() {
 		return articleContent;
 	}
 
@@ -42,15 +52,7 @@ public class Article {
 		this.summary = summary;
 	}
 
-	public Integer getArticleId() {
-        return articleId;
-    }
-
-    public void setArticleId(Integer articleId) {
-        this.articleId = articleId;
-    }
-
-    public String getArticleTitle() {
+	public String getArticleTitle() {
         return articleTitle;
     }
 
@@ -88,5 +90,13 @@ public class Article {
 
     public void setClick(Integer click) {
         this.click = click;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 }

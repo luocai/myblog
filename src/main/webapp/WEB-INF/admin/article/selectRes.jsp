@@ -18,39 +18,30 @@
         .layui-input-block {
             margin: 0px 10px;
         }
-		.breadcrumb {
-	    padding: 8px 15px;
-	    margin-bottom: 20px;
-	    margin-left:-15px;
-	    margin-right:15px;
-	    list-style: none;
-	    background-color: #f5f5f5;
-	    border-radius: 4px;
-   }
+
 
     </style>
 </rapid:override>
 
 <rapid:override name="content">
-
-   <div class="container">  
-        <ul class="breadcrumb">  
-            <li><a href="main"> 首页</a></li>  
-            <li class="active"><a href="#">文章列表</a></li>  
-        </ul>  
-   </div> 
+    <blockquote class="layui-elem-quote">
+        <span class="layui-breadcrumb" lay-separator="/">
+          <a href="/admin">首页</a>
+          <a><cite>文章列表</cite></a>
+        </span>
+    </blockquote>
 
     <div class="layui-tab layui-tab-card">
         <ul class="layui-tab-title">
-            <li <c:if test="${flag==1}">class="layui-this"</c:if>><a href="articleList">已发布</a></li>
-            <li <c:if test="${flag==0}">class="layui-this"</c:if>><a href="articlePublishing">草稿</a></li>
+            <li class="layui-this">已发布</li>
+            <li>草稿</li>
         </ul>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
                 <form id="articleForm" method="post">
                     <div class="layui-form-item">
                         <div class="layui-input-block">
-                            <input type="text" name="words" placeholder="请输入关键词" autocomplete="off" class="layui-input">
+                            <input type="text" name="query" placeholder="请输入关键词" autocomplete="off" class="layui-input">
                             <button class="layui-btn" lay-filter="formDemo" onclick="selectArticle()">搜索</button>
                             <button class="layui-btn" lay-filter="formDemo" style="float: right;"
                                     onclick="deleteSome()">批量删除

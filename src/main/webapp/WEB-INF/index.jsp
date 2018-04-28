@@ -297,7 +297,7 @@
 	                    <li <c:if test="${pageInfo.pageNum==pageNo}">class="active"</c:if>><a href="index?page=${pageNo}">${pageNo}</a></li>
 	                </c:forEach>
 	                <li <c:if test="${pageInfo.pageNum==pageInfo.pages}">class="disabled"</c:if>><a href="index?page=${pageInfo.pageNum+1}">&raquo;</a></li>
-			   <li> <a href = "index?page=${page.pages }">尾页</a> </li>
+			   <li> <a href = "index?page=${pageInfo.pages }">尾页</a> </li>
             </ul>
         </div>
 </div>

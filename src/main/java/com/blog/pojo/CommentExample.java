@@ -285,76 +285,6 @@ public class CommentExample {
             return (Criteria) this;
         }
 
-        public Criteria andUserIpIsNull() {
-            addCriterion("user_ip is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpIsNotNull() {
-            addCriterion("user_ip is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpEqualTo(String value) {
-            addCriterion("user_ip =", value, "userIp");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpNotEqualTo(String value) {
-            addCriterion("user_ip <>", value, "userIp");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpGreaterThan(String value) {
-            addCriterion("user_ip >", value, "userIp");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpGreaterThanOrEqualTo(String value) {
-            addCriterion("user_ip >=", value, "userIp");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpLessThan(String value) {
-            addCriterion("user_ip <", value, "userIp");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpLessThanOrEqualTo(String value) {
-            addCriterion("user_ip <=", value, "userIp");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpLike(String value) {
-            addCriterion("user_ip like", value, "userIp");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpNotLike(String value) {
-            addCriterion("user_ip not like", value, "userIp");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpIn(List<String> values) {
-            addCriterion("user_ip in", values, "userIp");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpNotIn(List<String> values) {
-            addCriterion("user_ip not in", values, "userIp");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpBetween(String value1, String value2) {
-            addCriterion("user_ip between", value1, value2, "userIp");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserIpNotBetween(String value1, String value2) {
-            addCriterion("user_ip not between", value1, value2, "userIp");
-            return (Criteria) this;
-        }
-
         public Criteria andArticleIdIsNull() {
             addCriterion("article_id is null");
             return (Criteria) this;
@@ -552,6 +482,136 @@ public class CommentExample {
 
         public Criteria andUserNameNotBetween(String value1, String value2) {
             addCriterion("user_name not between", value1, value2, "userName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyIsNull() {
+            addCriterion("reply is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyIsNotNull() {
+            addCriterion("reply is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyEqualTo(String value) {
+            addCriterion("reply =", value, "reply");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNotEqualTo(String value) {
+            addCriterion("reply <>", value, "reply");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyGreaterThan(String value) {
+            addCriterion("reply >", value, "reply");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyGreaterThanOrEqualTo(String value) {
+            addCriterion("reply >=", value, "reply");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyLessThan(String value) {
+            addCriterion("reply <", value, "reply");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyLessThanOrEqualTo(String value) {
+            addCriterion("reply <=", value, "reply");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyLike(String value) {
+            addCriterion("reply like", value, "reply");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNotLike(String value) {
+            addCriterion("reply not like", value, "reply");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyIn(List<String> values) {
+            addCriterion("reply in", values, "reply");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNotIn(List<String> values) {
+            addCriterion("reply not in", values, "reply");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyBetween(String value1, String value2) {
+            addCriterion("reply between", value1, value2, "reply");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyNotBetween(String value1, String value2) {
+            addCriterion("reply not between", value1, value2, "reply");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyStateIsNull() {
+            addCriterion("reply_state is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyStateIsNotNull() {
+            addCriterion("reply_state is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyStateEqualTo(Integer value) {
+            addCriterion("reply_state =", value, "replyState");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyStateNotEqualTo(Integer value) {
+            addCriterion("reply_state <>", value, "replyState");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyStateGreaterThan(Integer value) {
+            addCriterion("reply_state >", value, "replyState");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyStateGreaterThanOrEqualTo(Integer value) {
+            addCriterion("reply_state >=", value, "replyState");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyStateLessThan(Integer value) {
+            addCriterion("reply_state <", value, "replyState");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyStateLessThanOrEqualTo(Integer value) {
+            addCriterion("reply_state <=", value, "replyState");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyStateIn(List<Integer> values) {
+            addCriterion("reply_state in", values, "replyState");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyStateNotIn(List<Integer> values) {
+            addCriterion("reply_state not in", values, "replyState");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyStateBetween(Integer value1, Integer value2) {
+            addCriterion("reply_state between", value1, value2, "replyState");
+            return (Criteria) this;
+        }
+
+        public Criteria andReplyStateNotBetween(Integer value1, Integer value2) {
+            addCriterion("reply_state not between", value1, value2, "replyState");
             return (Criteria) this;
         }
     }

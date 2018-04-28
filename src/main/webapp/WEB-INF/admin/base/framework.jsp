@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <title>诸葛财财博客的后台 <rapid:block name="title"></rapid:block></title>
-  <!-- 引入layui -->
+  
   <script src="${APP_PATH }/static/layui/layui.js"></script>
   <link rel="stylesheet" href="${APP_PATH }/static/layui/css/layui.css">
   
@@ -66,23 +66,23 @@
           <dl class="layui-nav-child">
             <dd><a href="articleList">全部博文</a></dd>
             <dd><a href="write">写博文</a></dd>
-            <dd><a href="javascript:;">分类管理</a></dd>
+            <dd><a href="categoryList">分类管理</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;">评论管理</a>
-          <dl class="layui-nav-child">
-            <dd><a href="javascript:;">查看评论</a></dd>
-            <dd><a href="javascript:;"></a></dd>
-          
-          </dl>
+	          <dl class="layui-nav-child">
+	            <dd><a href="commentList">查看评论</a></dd>
+	            <dd><a href="javascript:;">呵呵</a></dd>
+	          </dl>
         </li>
-        <li class="layui-nav-item"><a href="">用户管理</a></li>
-       	<dl class="layui-nav-child">
-            <dd><a href="javascript:;">所有用户</a></dd>
-            <dd><a href="javascript:;"></a></dd>
-          
-          </dl>
+        <li class="layui-nav-item">
+        	<a href="javascript:;">用户管理</a>
+	       	<dl class="layui-nav-child">
+	            <dd><a href="javascript:;">所有用户</a></dd>
+	            <dd><a href="javascript:;">呵呵</a></dd>
+	         </dl>
+        </li>
       </ul>
     </div>
   </div>
@@ -91,7 +91,7 @@
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
             <rapid:block name="content">
-
+            
             </rapid:block>
         </div>
     </div>
@@ -101,10 +101,13 @@
 <rapid:block name="footer-script">
 
 </rapid:block>
-<script>
-    //给文本编辑器的iframe引入代码高亮的css
-    $("iframe").contents().find("head").append("<link rel=\"stylesheet\" href=\"/css/highlight.css\">\n");
 
+<script>
+//JavaScript代码区域
+layui.use('element', function(){
+  var element = layui.element;
+  
+});
 </script>
 </body>
 </html>

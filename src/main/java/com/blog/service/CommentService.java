@@ -14,4 +14,8 @@ public interface CommentService {
 	
 	List<Comment> selectByArticleId(Integer id);
 	
+	List<Comment> selectAll();
+	
+	//增加回复
+	boolean updateComment(Comment comment);
 }

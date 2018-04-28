@@ -3,19 +3,28 @@ package com.blog.pojo;
 import java.util.Date;
 
 public class Comment {
-    private Integer commentId;
+    @Override
+	public String toString() {
+		return "Comment [commentId=" + commentId + ", userId=" + userId + ", commentTime=" + commentTime
+				+ ", articleId=" + articleId + ", commentContent=" + commentContent + ", userName=" + userName
+				+ ", reply=" + reply + ", replyState=" + replyState + "]";
+	}
+
+	private Integer commentId;
 
     private Integer userId;
 
     private Date commentTime;
-
-    private String userIp;
 
     private Integer articleId;
 
     private String commentContent;
 
     private String userName;
+
+    private String reply;
+
+    private Integer replyState;
 
     public Integer getCommentId() {
         return commentId;
@@ -41,14 +50,6 @@ public class Comment {
         this.commentTime = commentTime;
     }
 
-    public String getUserIp() {
-        return userIp;
-    }
-
-    public void setUserIp(String userIp) {
-        this.userIp = userIp == null ? null : userIp.trim();
-    }
-
     public Integer getArticleId() {
         return articleId;
     }
@@ -71,5 +72,21 @@ public class Comment {
 
     public void setUserName(String userName) {
         this.userName = userName == null ? null : userName.trim();
+    }
+
+    public String getReply() {
+        return reply;
+    }
+
+    public void setReply(String reply) {
+        this.reply = reply == null ? null : reply.trim();
+    }
+
+    public Integer getReplyState() {
+        return replyState;
+    }
+
+    public void setReplyState(Integer replyState) {
+        this.replyState = replyState;
     }
 }

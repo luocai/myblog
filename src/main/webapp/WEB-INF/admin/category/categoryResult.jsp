@@ -36,15 +36,12 @@
    <div class="container">  
         <ul class="breadcrumb">  
             <li><a href="main"> 首页</a></li>  
-            <li class="active"><a href="#">文章列表</a></li>  
+            <li class="active"><a href="#">分类列表</a></li>  
+            <li class="active"><a href="#">分类结果</a></li>  
         </ul>  
    </div> 
 
     <div class="layui-tab layui-tab-card">
-        <ul class="layui-tab-title">
-            <li <c:if test="${flag==1}">class="layui-this"</c:if>><a href="articleList">已发布</a></li>
-            <li <c:if test="${flag==0}">class="layui-this"</c:if>><a href="articlePublishing">草稿</a></li>
-        </ul>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
                 <form id="articleForm" method="post">

@@ -9,15 +9,28 @@
     <rapid:override name="title">
         - 新建文章
     </rapid:override>
+<rapid:override name="header-style">
+    <style>
+	.breadcrumb {
+	    padding: 8px 15px;
+	    margin-bottom: 20px;
+	    margin-left:-15px;
+	    margin-right:15px;
+	    list-style: none;
+	    background-color: #f5f5f5;
+	    border-radius: 4px;
+   }
 
+    </style>
+</rapid:override>
 <rapid:override name="content">
-    <blockquote class="layui-elem-quote">
-         <span class="layui-breadcrumb" lay-separator="/">
-              <a href="/admin/main">首页</a>
-              <a href="/admin/articleList">文章列表</a>
-              <a><cite>添加文章</cite></a>
-        </span>
-    </blockquote>
+
+     <div class="container">  
+        <ul class="breadcrumb">  
+            <li><a href="main"> 首页</a></li>  
+            <li class="active"><a href="#">修改文章</a></li>  
+        </ul>  
+   </div> 
 
 
 
