@@ -256,4 +256,12 @@
       reply_state = #{replyState,jdbcType=INTEGER}
     where comment_id = #{commentId,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+		select 
+		 <include refid="Base_Column_List" />
+	    from comment 
+	    order by comment_time desc
+	</select>
+	
 </mapper>

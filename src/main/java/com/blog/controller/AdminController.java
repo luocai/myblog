@@ -316,12 +316,14 @@ System.out.println(categoryId);
 		
 		PageHelper.startPage(page, 5);
 		List<Comment> commentList = commentService.selectAll();
+System.out.println("commentList:" + commentList);
 		List<CommentCustom> commentCustomList = new ArrayList<>();
 		PageInfo<Comment> pageInfo = new PageInfo<>(commentList,5);
 		
 		for(int i = 0; i < commentList.size(); i++){
 			
 			Comment comment = commentList.get(i);
+System.out.println(comment);
 			CommentCustom commentCustom = new CommentCustom();
 			Article article = articleService.selectById(comment.getArticleId());
 			
@@ -403,4 +405,11 @@ System.out.println(commentId);
 		}
 		return res;
 	}
+	
+	@RequestMapping(value="layout")
+	public String layout(){
+		
+		return "redirect:login";
+	}
+	
 }

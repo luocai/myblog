@@ -30,9 +30,13 @@
             z-index: 1;
         }/*给背景图片设置蒙版*/
         body {
-            font: 14px/1.5 微软雅黑, arial, sans-serif;
+           font-family: SimSun;
+		    font-size: 14px!important;
+		    line-height: 1.5; 
+           /*font: 14px/1.5 微软雅黑, arial, sans-serif;*/
             width: 100%;
             overflow: scroll;
+            background-color:rgb(233,239,243)
         }
         #header {
             position: fixed;
@@ -72,7 +76,7 @@
         }/*去掉链接下划线*/
         #bg {
             position: relative;
-            background: url("${APP_PATH }/static/images/296494-106.jpg") no-repeat gray;
+            background: url("${APP_PATH }/static/images/bg.png") no-repeat gray;
             background-size: cover;
         }/*设置背景图片*/
         #bg p {
@@ -179,7 +183,7 @@
             position: relative;
             padding: 0 20px;
             margin: 40px auto;
-            max-width: 950px;
+            max-width: 800px;
             background: #fff;
             text-align: center;
         }
@@ -240,21 +244,98 @@
         #pagebar{
             text-align: center;
         }
-        .comment{
-        width:60%;
-        position:relative;
-        left:20%;
+     /*   .comment{
         border:1px ;
         text-align:center;
         margin:9px;
         background-color:#fff;
-        border-radius: 5px;
+        border-radius: 20px;
         transition: all .5s;
+        position: relative;
+        margin: 40px auto;
+        max-width: 800px;
+        }  */
+        
+        div {
+		    display: block;
+		}
+        #commentarea{
+        	/* box-shadow: 5px 5px 25px #dadada; */
+            position: relative;
+            margin: 40px auto;
+            max-width: 800px; 
+               /*  border: none;
+			    outline: 0;
+			    resize: none;
+			    width: 100%;
+			    color: #a4afb7;
+			    font-size: 14px;
+			    min-height: 60px;
+			    background-color: #f5f9fb; */
         }
-
+        #content{
+       	   background:rgb(245,249,251);
+        }
+       /*  #zhengwen{
+	        font-family: Microsoft Yahei;
+		    font-size: 14px;
+		    line-height: 2;
+        } */
+        
+        #name{
+        	display:none;
+        	background:rgb(245,249,251);
+        	max-width:92%;
+        }
+        
+         #comments{
+        	transition: all .5s;
+	        position: relative;
+	        margin: 40px auto;
+	        max-width: 800px;
+        }
+        
+         #comment{
+        	border:1px ;
+	        margin:9px;
+	        transition: all .5s;
+	        position: relative;
+	        margin: 40px auto;
+	        max-width: 800px;
+        } 
+        
+        #nameherf{
+     
+	        font-size: 14px;
+		    color: #5592c1;
+		    font-weight: 700;
+        }
+        .pcontent{
+       	 
+            color: #666;
+		    font-size: 14px;
+		    line-height: 1.6;
+		    margin-top: 8px;
+        }
+        #date{
+            color: #bbb;
+    		float: left;
+        }
+        
+        #photo{
+        	float:left; 
+        	border-radius:70%;
+        	overflow:hidden;
+        }
+        
+        #text{
+            float: left;
+		    margin-left: 20px;
+		    width: 690px;
+        }
     </style>
-</head>
-<body background="${APP_PATH }/static/images/bg.png" >
+</head> <!-- background="${APP_PATH }/static/images/bg.png" -->
+<body>
 
 <div>
     <header id="header">
@@ -283,14 +364,11 @@
         </p>
     </div>
     <div id="container">
-<article class="article">
+		<article class="article">
             <time id="time1">${article.publishTime}</time>
             <h2 style="text-align: center; ">${article.articleTitle}</h2>
             <p style="position: center" class="text-info">点击量:${article.click}</p>
             <section>
-                <blockquote>
-                    <p>${article.summary}</p>
-                </blockquote>
                 <p id="zhengwen">
                     ${article.articleContent}
                 </p>
@@ -303,63 +381,103 @@
                     <span>Have a nice day :)</span>
                 </p>
             </section>
+            <div style="position: relative;" align="center" style="margin:5px auto 6px auto ;">
+	    	 <div class="row">
+	    		<c:if test="${!empty lastArticle }">
+	              <a href="article?id=${lastArticle.articleId}"><span class="label label-primary" >上一篇:${lastArticle.articleTitle}</span></a>
+	        	</c:if>
+		        <c:if test="${!empty nextArticle }">
+		          <a href="article?id=${nextArticle.articleId}"><span class="label label-success" >下一篇:${nextArticle.articleTitle}</span></a>
+		        </c:if>
+	    	</div> 
+   			 </div>
         </article>
     </div>
-    <% int i =1;    %>
-    <c:forEach items="${comments}" var="comment">
+    
+    
+    
+	   <div id="commentarea">
+			 <div class="form-horizontal" role="form" style="margin:10px">
+    			<div class="form-group">
+             			 <textarea id="content" onfocus="of()"  class="form-control" rows="2" placeholder="想对作者说些什么" ></textarea>
+                </div>
+        		<input id="articleId" type="hidden" value="${article.articleId}" >
+				<div class="form-group">
+               		<div >
+               			<input type="text" id="name" class="form-control"
+               				   placeholder="给自己起个昵称哦">
+               			<span><button id="commentButton" class="btn btn-default" style="display:none;background-color: #ea9d38;" type="submit">发表</button> </span>
+               		</div>
+               		
+               		<p style="text-align: right;color: red;position: absolute" id="info"></p>
+               	</div>
+      		</div>
+		</div>    
+    
+ 			
+   <%--  <% int i =1;    %> --%>
+   <div class="comments">
+     <c:forEach items="${comments}" var="comment">
 
 
-        <article class="comment">
+        <%-- <article class="comment">
                 <section style="text-align:left">
                 <%= i++  %>楼&nbsp;&nbsp;${comment.userName}&nbsp;&nbsp;${comment.commentTime}<br/><br/>
                 <p>${comment.commentContent}</p><br/>
                 </section>
-            </article>
+            </article> --%>
+           <div id="comment">
+           		<a href="##">
+					<img src="${APP_PATH }/static/images/h.jpg" id="photo" alt="" width="50" height="50">
+				</a>
+				<div id="text">
+					<a href="##" id="nameherf">${comment.userName}</a>
+					<p class="pcontent">
+						${comment.commentContent }
+					</p>
+					<p id="date">
+						<span class="date">${comment.commentTime }</span>
+					</p>
+		  	    </div>
+           </div>
     </c:forEach>
-    		<div class="form-horizontal" role="form" style="margin:10px">
-    			<div class="form-group">
-                        <label for="inputPassword" class="col-sm-2 control-label">评论</label>
-                        <div class="col-sm-3">
-                               <textarea id="content"  class="form-control" rows="3"  placeholder="文明上网，理性发言" ></textarea>
-                         </div>
-                 </div>
-        <input id="articleId" type="hidden" value="${article.articleId}" >
-    					<div class="form-group">
-                    		<label for="name" class="col-sm-2 control-label">昵称</label>
-
-                    		<div class="col-sm-3">
-                    			<input type="text" id="name" class="form-control"
-                    				   placeholder="昵称">
-                    		</div>
-                    	</div>
-                    	<div class="form-group">
-                               <label for="userIp" class="col-sm-2 control-label">Ip</label>
-                                <div class="col-sm-3">
-                                  <input type="text" id="userIp" class="form-control"  placeholder="Ip">
-                                </div>
-                        </div>
-                        <div class="form-group" style="position:relative;left:13%">
-     <br/>
-        <p style="text-align: right;color: red;position: absolute" id="info"></p>
-        <br/>
-     <button id="commentButton" class="btn btn-default" type="submit">提交</button>
-                                                </div>
-
-    			</div>
-    			 <script>
+   </div>
+   
+ <%--    <div style="position: relative;" align="center" style="margin:5px auto 6px auto ;">
+    	<div class="row">
+    		<c:if test="${!empty lastArticle }">
+              <a href="article?id=${lastArticle.articleId}"><span class="label label-primary" >上一篇:${lastArticle.articleTitle}</span></a>
+        	</c:if>
+	        <c:if test="${!empty nextArticle }">
+	          <a href="article?id=${nextArticle.articleId}"><span class="label label-success" >下一篇:${nextArticle.articleTitle}</span></a>
+	        </c:if>
+    	</div>
+    </div>  --%>
+    
+    <div class="row">
+    
+    </div>
+	<div>
+	    <footer id="footer">
+	        <section id="copyright">
+	            <p style="font-size: 20px">
+	                © 2018 <a href="/">星·光</a>
+	            </p>
+	        </section>
+	    </footer>
+	</div>
+</div>
+ <script>
 
                         $("#commentButton").click(function () {
-                            if($("#content").val()==''&&$("#name").val()==''&&$("#userIp").val()==''){
-                                $("#info").text("提示:请输入评论内容,昵称和邮箱");
+                            if($("#content").val()==''&&$("#name").val()==''){
+                                $("#info").text("提示:请输入评论内容和你的昵称");
                             }
                             else if ($("#content").val()==''){
                                 $("#info").text("提示:请输入评论内容");
                             }
                             else if($("#name").val()==''){
                                 $("#info").text("提示:请输入昵称");
-                            }
-                            else if($("#userIp").val()==''){
-                                $("#info").text("提示:请输入ip（测试）");
                             }
                             else {
                              $("#info").text("");
@@ -369,7 +487,6 @@
                                     data: {
                                         commentContent: $("#content").val() ,
                                         userName: $("#name").val(),
-                                        userIp: $("#userIp").val(),
                                         articleId:$("#articleId").val(),
                                     },
                                     dataType: "json",
@@ -384,27 +501,35 @@
                                 });
                             }
                         })
+					
+					function of(){
+						$("#content").attr("rows","3");
+							
+							$("#name").show();
+							$("#commentButton").show();
+					}
+					
+					/* function bl(){
 
+						$("#content").attr("rows","1");
+					
+						$("#name").hide();
+						$("#commentButton").hide();
+			
+					} */
+					/* $(function(){
+						$("#content").focus(function(){
+							$("#content").attr("rows","3");
+							alert("hehe");
+							$("#name").show();
+							$("#commentButton").show();
+						}).blur(function(){
+							$("#content").attr("rows","1");
+							alert("blur");
+							$("#name").hide();
+							$("#commentButton").hide();
+						})
+					}) */
                     </script>
-    <div style="position: relative;left: 12%">
-        <c:if test="${!empty lastArticle }">
-            <div ><a href="/article/?id=${lastArticle.id}"><h4><span class="label label-primary">上一篇:${lastArticle.title}</span></h4></a></div>
-        </c:if>
-        <c:if test="${!empty nextArticle }">
-            <div><a href="/article/?id=${nextArticle.id}"><h4><span class="label label-success">下一篇:${nextArticle.title}</span></h4></a></div>
-        </c:if>
-    </div>
-    </div>
-
-    <footer id="footer">
-        <section id="copyright">
-            <p style="font-size: 20px">
-                © 2018 <a href="/">星·光</a>
-            </p>
-        </section>
-    </footer>
-
-</div>
-</div>
 </body>
 </html>

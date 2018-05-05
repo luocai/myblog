@@ -23,4 +23,8 @@ public interface ArticleService {
 	List<Article> selectPublishing();
 	
 	List<Article> seletcByCategory(Integer categoryId);
+	
+	//查找上一篇和下一篇
+	Article selectLastArticle(Integer id);
+	Article selectNextArticle(Integer id);
 }

@@ -30,22 +30,12 @@
     <div class="layui-logo">诸葛财财博客的后台</div>
     <!-- 头部区域（可配合layui已有的水平导航） -->
     <ul class="layui-nav layui-layout-left">
-      <li class="layui-nav-item"><a href="">控制台</a></li>
-      <li class="layui-nav-item"><a href="">商品管理</a></li>
-      <li class="layui-nav-item"><a href="">用户</a></li>
-      <li class="layui-nav-item">
-        <a href="javascript:;">其它系统</a>
-        <dl class="layui-nav-child">
-          <dd><a href="">邮件管理</a></dd>
-          <dd><a href="">消息管理</a></dd>
-          <dd><a href="">授权管理</a></dd>
-        </dl>
-      </li>
+      <li class="layui-nav-item"><a href="main">首页</a></li>
     </ul>
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
         <a href="javascript:;">
-          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+          <img src="mylog/static/images/head.jpg" class="layui-nav-img">
           诸葛财财
         </a>
         <dl class="layui-nav-child">
@@ -53,7 +43,7 @@
           <dd><a href="">安全设置</a></dd>
         </dl>
       </li>
-      <li class="layui-nav-item"><a href="">退了</a></li>
+      <li class="layui-nav-item"><a href="../layout">退出</a></li>
     </ul>
   </div>
   
@@ -73,14 +63,12 @@
           <a href="javascript:;">评论管理</a>
 	          <dl class="layui-nav-child">
 	            <dd><a href="commentList">查看评论</a></dd>
-	            <dd><a href="javascript:;">呵呵</a></dd>
 	          </dl>
         </li>
         <li class="layui-nav-item">
         	<a href="javascript:;">用户管理</a>
 	       	<dl class="layui-nav-child">
 	            <dd><a href="javascript:;">所有用户</a></dd>
-	            <dd><a href="javascript:;">呵呵</a></dd>
 	         </dl>
         </li>
       </ul>
@@ -103,11 +91,12 @@
 </rapid:block>
 
 <script>
-//JavaScript代码区域
-layui.use('element', function(){
-  var element = layui.element;
-  
-});
+	
+	layui.use('element', function(){
+	  var element = layui.element;
+	  
+	});
+	
 </script>
 </body>
 </html>

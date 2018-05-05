@@ -318,4 +318,19 @@
       state = #{state,jdbcType=INTEGER}
     where article_id = #{articleId,jdbcType=INTEGER}
   </update>
+  
+  	<select id="selectLastArticle" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    article_id,article_title
+    from article
+    where article_id = #{id} ORDER BY article_id desc limit 1;
+  </select>
+
+  <select id="selectNextArticle" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    article_id,article_title
+    from article
+    where article_id = #{id} ORDER BY article_id ASC limit 1;
+  </select>
+  
 </mapper>

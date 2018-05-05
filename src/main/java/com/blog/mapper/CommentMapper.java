@@ -27,4 +27,7 @@ public interface CommentMapper {
     int updateByPrimaryKeySelective(Comment record);
 
     int updateByPrimaryKey(Comment record);
+    
+    //按时间排序
+    List<Comment> selectAll();
 }

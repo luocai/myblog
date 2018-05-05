@@ -25,13 +25,19 @@ public class ArticleController {
 		Article article = articleService.selectById(id);
 		List<Comment> comments = commentService.selectByArticleId(id);
 System.out.println(article);
+		
+		Article lastArticle = articleService.selectLastArticle(id);
+		Article nextArticle = articleService.selectNextArticle(id);
+System.out.println(lastArticle);	
+System.out.println(nextArticle);
 		model.addAttribute("article", article);
 		model.addAttribute("comments", comments);
+		model.addAttribute("lastArticle", lastArticle);
+		model.addAttribute("nextArticle", nextArticle);
 		
-//		model.addAttribute("click", 10);
 		
 		
-		return "detail";
+		return "home/detail";
 	}
 	
 }

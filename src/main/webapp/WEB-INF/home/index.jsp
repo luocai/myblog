@@ -32,6 +32,7 @@
             font: 14px/1.5 微软雅黑, arial, sans-serif;
             width: 100%;
             overflow: scroll;
+            background-color:rgb(233,239,243)
         }
         #header {
             position: fixed;
@@ -71,7 +72,7 @@
         }/*去掉链接下划线*/
         #bg {
             position: relative;
-            background: url("${APP_PATH }/static/images/296494-106.jpg") no-repeat gray;
+            background: url("${APP_PATH }/static/images/back.jpg") no-repeat gray;
             background-size: cover;
         }/*设置背景图片*/
         #bg p {
@@ -243,7 +244,7 @@
 
     </style>
 </head>
-<body background="${APP_PATH }/static/images/bg.png" >
+<body>
 
 <div>
     <header id="header">
@@ -277,7 +278,7 @@
     <article class="article">
         <time>${article.publishTime}</time>
         <h2 class="title"><a href="article?id=${article.articleId}">${article.articleTitle}</a></h2>
-        <span><i>${keywords}</i></span>
+        <span><i>${article.categoryName}</i></span>
         <section class="article-content markdown-body">
             <blockquote>
                 <p>${article.summary}</p>

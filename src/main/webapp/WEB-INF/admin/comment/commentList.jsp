@@ -77,9 +77,17 @@
                                 <strong>${c.userName}</strong>
                             </td>
                             <td class="dashboard-comment-wrap">
-                             
-                                    ${c.commentContent}
+                            	<div class="row-actions">
+                            		<span id="content${c.commentId }">
+                            			${c.commentContent}
+                            		</span>
+                            	</div>  
                                 <div class="row-actions">
+                                	<span id="reply${c.commentId }" style="display:none">
+                                	回复 ${c.userName }：${c.reply }
+                                	</span>
+                                </div>
+                                <div class="row-actions" id="link${c.commentId }">
                                      <span class="">
                                      <%--       <c:choose>
                                                <c:when test="${c.commentCustom.commentStatus==0}">
@@ -94,7 +102,7 @@
                                         <%-- <a href="commentReply?id=${c.commentId}">
                                             回复
                                         </a> --%>
-                                        <a href="#" onclick="reply('${c.commentId}')">回复</a> 
+                                        <a href="#" id="reply${c.commentId }" <c:if test="${c.replyState ==0 }"> onclick="reply('${c.commentId}')"</c:if> >回复</a> 
                                      </span>
                                      <span class=""> |
                                         <a href="#" onclick="deleteComment('${c.commentId}')">删除</a>
@@ -110,15 +118,15 @@
                                 </form>
                             </td>
                             <td>
-                                <a href="/article/${c.articleId}"
+                                <a href="../article?id=${c.articleId}"
                                    target="_blank">${c.articleTitle}</a>
                             </td>
                             <td>
                                 <fmt:formatDate value="${c.commentTime}" pattern="yyyy年MM月dd日 HH:dd:ss"/>
                             </td>
                             <td>
-                                    <c:if test="${c.replyState == 1 }">已回复</c:if>
-                                    <c:if test="${c.replyState == 0 }">未回复</c:if>
+                                    <c:if test="${c.replyState == 1 }">已回复  <a href="#" id="look${c.commentId }" onclick="lookReply('${c.commentId}')">查看</a></c:if>
+                                    <c:if test="${c.replyState == 0 }"><span style="color:red">未回复</span></c:if>
                             </td>
 
                         </tr>
@@ -195,8 +203,7 @@
 		function replySubmit(id){
 			$("#form"+id).attr("action", "addReply");
 			$("#form" + id).submit();
-			alert(id);
-			alert("回复成功!")
+			alert("回复成功!");
 			window.location.reload();
 		}
 		
@@ -223,6 +230,21 @@
 					alert("异常！");
 				}
 			})
+		}
+		
+		function lookReply(commentId){
+			if ($("#reply"+commentId).is(':hidden')){
+				$("#link" +commentId).hide();
+				$("#reply"+commentId).show();
+				$("#reply" +commentId).css("color","BlueViolet");
+	/* 			$("#content"+commentId).css("color","red"); */
+				$("#look" +commentId).text("收起");
+			}else{
+				$("#reply"+commentId).hide();
+				$("#link" +commentId).show();
+				$("#look"+commentId).text("查看");
+			}
+			
 		}
     </script>
 </rapid:override>

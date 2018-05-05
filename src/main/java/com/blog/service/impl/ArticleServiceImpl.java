@@ -110,4 +110,16 @@ public class ArticleServiceImpl implements ArticleService {
 		return articleMapper.selectByExample(articleExample);
 	}
 
+	@Override
+	public Article selectLastArticle(Integer id) {
+		
+		return articleMapper.selectLastArticle(id);
+	}
+
+	@Override
+	public Article selectNextArticle(Integer id) {
+		
+		return articleMapper.selectNextArticle(id);
+	}
+
 }

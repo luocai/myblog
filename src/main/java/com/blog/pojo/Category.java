@@ -1,7 +1,13 @@
 package com.blog.pojo;
 
 public class Category {
-    private Integer categoryId;
+    @Override
+	public String toString() {
+		return "Category [categoryId=" + categoryId + ", categoryName=" + categoryName + ", keywords=" + keywords
+				+ ", description=" + description + "]";
+	}
+
+	private Integer categoryId;
 
     private String categoryName;
 
