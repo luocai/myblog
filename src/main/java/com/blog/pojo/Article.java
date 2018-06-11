@@ -16,25 +16,12 @@ public class Article {
     private Integer click;
 
     private Integer state;
+
+    private String cover;
     
-    private String articleContent;
+   private String articleContent;
     
     private String summary;
-
-    @Override
-	public String toString() {
-		return "Article [articleId=" + articleId + ", articleTitle=" + articleTitle + ", publishTime=" + publishTime
-				+ ", writerId=" + writerId + ", category=" + category + ", click=" + click + ", state=" + state
-				+ ", articleContent=" + articleContent + ", summary=" + summary + "]";
-	}
-
-	public Integer getArticleId() {
-        return articleId;
-    }
-
-    public void setArticleId(Integer articleId) {
-        this.articleId = articleId;
-    }
 
     public String getArticleContent() {
 		return articleContent;
@@ -52,7 +39,15 @@ public class Article {
 		this.summary = summary;
 	}
 
-	public String getArticleTitle() {
+	public Integer getArticleId() {
+        return articleId;
+    }
+
+    public void setArticleId(Integer articleId) {
+        this.articleId = articleId;
+    }
+
+    public String getArticleTitle() {
         return articleTitle;
     }
 
@@ -98,5 +93,13 @@ public class Article {
 
     public void setState(Integer state) {
         this.state = state;
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover == null ? null : cover.trim();
     }
 }

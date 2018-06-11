@@ -3,6 +3,8 @@ package com.blog.service;
 import java.util.List;
 
 import com.blog.pojo.Article;
+import com.blog.pojo.ArticleExample;
+import com.blog.pojo.ArticleExample.Criteria;
 
 public interface ArticleService {
 
@@ -11,6 +13,7 @@ public interface ArticleService {
 	
 	boolean updateArticle(Article article);
 	
+	//查找全部
 	List<Article> selectAll();
 	
 //	List<Article> selectByPage();
@@ -22,9 +25,16 @@ public interface ArticleService {
 	List<Article> selectPublished();
 	List<Article> selectPublishing();
 	
-	List<Article> seletcByCategory(Integer categoryId);
+	List<Article> selectByCategory(Integer categoryId);
 	
 	//查找上一篇和下一篇
 	Article selectLastArticle(Integer id);
 	Article selectNextArticle(Integer id);
+	
+	//查找点击率最高的文章
+	public List<Article> selectHotArticle();
+
+
+	public List<Article> selectByTitlePublished(String search);
+
 }

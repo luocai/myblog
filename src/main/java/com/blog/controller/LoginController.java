@@ -43,7 +43,7 @@ System.out.println(0);
 			res.put("stateCode", "1");
 System.out.println(1);
 		}else{
-			request.getSession().setAttribute("admin",user);
+			request.getSession().setAttribute("user",user);
 			res.put("stateCode", "2");
 System.out.println(2);
 		}
@@ -51,4 +51,10 @@ System.out.println("hehe");
 		return res;
 	}
 	
+	@RequestMapping(value="/logout")
+	public String logout(HttpServletRequest request){
+		
+		request.getSession().setAttribute("user", null);
+		return "redirect:login";
+	}
 }

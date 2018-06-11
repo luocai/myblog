@@ -234,73 +234,63 @@ public class CategoryExample {
             return (Criteria) this;
         }
 
-        public Criteria andKeywordsIsNull() {
-            addCriterion("keywords is null");
+        public Criteria andArticlecountIsNull() {
+            addCriterion("articleCount is null");
             return (Criteria) this;
         }
 
-        public Criteria andKeywordsIsNotNull() {
-            addCriterion("keywords is not null");
+        public Criteria andArticlecountIsNotNull() {
+            addCriterion("articleCount is not null");
             return (Criteria) this;
         }
 
-        public Criteria andKeywordsEqualTo(String value) {
-            addCriterion("keywords =", value, "keywords");
+        public Criteria andArticlecountEqualTo(Integer value) {
+            addCriterion("articleCount =", value, "articlecount");
             return (Criteria) this;
         }
 
-        public Criteria andKeywordsNotEqualTo(String value) {
-            addCriterion("keywords <>", value, "keywords");
+        public Criteria andArticlecountNotEqualTo(Integer value) {
+            addCriterion("articleCount <>", value, "articlecount");
             return (Criteria) this;
         }
 
-        public Criteria andKeywordsGreaterThan(String value) {
-            addCriterion("keywords >", value, "keywords");
+        public Criteria andArticlecountGreaterThan(Integer value) {
+            addCriterion("articleCount >", value, "articlecount");
             return (Criteria) this;
         }
 
-        public Criteria andKeywordsGreaterThanOrEqualTo(String value) {
-            addCriterion("keywords >=", value, "keywords");
+        public Criteria andArticlecountGreaterThanOrEqualTo(Integer value) {
+            addCriterion("articleCount >=", value, "articlecount");
             return (Criteria) this;
         }
 
-        public Criteria andKeywordsLessThan(String value) {
-            addCriterion("keywords <", value, "keywords");
+        public Criteria andArticlecountLessThan(Integer value) {
+            addCriterion("articleCount <", value, "articlecount");
             return (Criteria) this;
         }
 
-        public Criteria andKeywordsLessThanOrEqualTo(String value) {
-            addCriterion("keywords <=", value, "keywords");
+        public Criteria andArticlecountLessThanOrEqualTo(Integer value) {
+            addCriterion("articleCount <=", value, "articlecount");
             return (Criteria) this;
         }
 
-        public Criteria andKeywordsLike(String value) {
-            addCriterion("keywords like", value, "keywords");
+        public Criteria andArticlecountIn(List<Integer> values) {
+            addCriterion("articleCount in", values, "articlecount");
             return (Criteria) this;
         }
 
-        public Criteria andKeywordsNotLike(String value) {
-            addCriterion("keywords not like", value, "keywords");
+        public Criteria andArticlecountNotIn(List<Integer> values) {
+            addCriterion("articleCount not in", values, "articlecount");
             return (Criteria) this;
         }
 
-        public Criteria andKeywordsIn(List<String> values) {
-            addCriterion("keywords in", values, "keywords");
+        public Criteria andArticlecountBetween(Integer value1, Integer value2) {
+            addCriterion("articleCount between", value1, value2, "articlecount");
             return (Criteria) this;
         }
 
-        public Criteria andKeywordsNotIn(List<String> values) {
-            addCriterion("keywords not in", values, "keywords");
-            return (Criteria) this;
-        }
-
-        public Criteria andKeywordsBetween(String value1, String value2) {
-            addCriterion("keywords between", value1, value2, "keywords");
-            return (Criteria) this;
-        }
-
-        public Criteria andKeywordsNotBetween(String value1, String value2) {
-            addCriterion("keywords not between", value1, value2, "keywords");
+        public Criteria andArticlecountNotBetween(Integer value1, Integer value2) {
+            addCriterion("articleCount not between", value1, value2, "articlecount");
             return (Criteria) this;
         }
     }

@@ -3,14 +3,7 @@ package com.blog.pojo;
 import java.util.Date;
 
 public class Comment {
-    @Override
-	public String toString() {
-		return "Comment [commentId=" + commentId + ", userId=" + userId + ", commentTime=" + commentTime
-				+ ", articleId=" + articleId + ", commentContent=" + commentContent + ", userName=" + userName
-				+ ", reply=" + reply + ", replyState=" + replyState + "]";
-	}
-
-	private Integer commentId;
+    private Integer commentId;
 
     private Integer userId;
 
@@ -25,6 +18,8 @@ public class Comment {
     private String reply;
 
     private Integer replyState;
+
+    private Date replyTime;
 
     public Integer getCommentId() {
         return commentId;
@@ -88,5 +83,13 @@ public class Comment {
 
     public void setReplyState(Integer replyState) {
         this.replyState = replyState;
+    }
+
+    public Date getReplyTime() {
+        return replyTime;
+    }
+
+    public void setReplyTime(Date replyTime) {
+        this.replyTime = replyTime;
     }
 }

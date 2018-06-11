@@ -29,13 +29,17 @@ public interface ArticleMapper {
 
     int updateByExample(@Param("record") Article record, @Param("example") ArticleExample example);
 
-    int updateByPrimaryKeySelective(ArticleWithBLOBs record);
+    int updateByPrimaryKeySelective(Article article);
 
     int updateByPrimaryKeyWithBLOBs(ArticleWithBLOBs record);
 
     int updateByPrimaryKey(Article record);
     
+    List<Article> selectAll();
+    
     Article selectLastArticle(Integer id);
 
     Article selectNextArticle(Integer id);
+
+	List<Article> selectHotArticle();
 }

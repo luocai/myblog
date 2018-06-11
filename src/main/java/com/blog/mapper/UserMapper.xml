@@ -5,8 +5,6 @@
     <id column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="user_role" jdbcType="INTEGER" property="userRole" />
-    <result column="login_ip" jdbcType="VARCHAR" property="loginIp" />
     <result column="nickname" jdbcType="VARCHAR" property="nickname" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -68,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    user_id, username, password, user_role, login_ip, nickname
+    user_id, username, password, nickname
   </sql>
   <select id="selectByExample" parameterType="com.blog.pojo.UserExample" resultMap="BaseResultMap">
     select
@@ -102,11 +100,9 @@
   </delete>
   <insert id="insert" parameterType="com.blog.pojo.User">
     insert into user (user_id, username, password, 
-      user_role, login_ip, nickname
-      )
+      nickname)
     values (#{userId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{userRole,jdbcType=INTEGER}, #{loginIp,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}
-      )
+      #{nickname,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.blog.pojo.User">
     insert into user
@@ -119,12 +115,6 @@
       </if>
       <if test="password != null">
         password,
-      </if>
-      <if test="userRole != null">
-        user_role,
-      </if>
-      <if test="loginIp != null">
-        login_ip,
       </if>
       <if test="nickname != null">
         nickname,
@@ -139,12 +129,6 @@
       </if>
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="userRole != null">
-        #{userRole,jdbcType=INTEGER},
-      </if>
-      <if test="loginIp != null">
-        #{loginIp,jdbcType=VARCHAR},
       </if>
       <if test="nickname != null">
         #{nickname,jdbcType=VARCHAR},
@@ -169,12 +153,6 @@
       <if test="record.password != null">
         password = #{record.password,jdbcType=VARCHAR},
       </if>
-      <if test="record.userRole != null">
-        user_role = #{record.userRole,jdbcType=INTEGER},
-      </if>
-      <if test="record.loginIp != null">
-        login_ip = #{record.loginIp,jdbcType=VARCHAR},
-      </if>
       <if test="record.nickname != null">
         nickname = #{record.nickname,jdbcType=VARCHAR},
       </if>
@@ -188,8 +166,6 @@
     set user_id = #{record.userId,jdbcType=INTEGER},
       username = #{record.username,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
-      user_role = #{record.userRole,jdbcType=INTEGER},
-      login_ip = #{record.loginIp,jdbcType=VARCHAR},
       nickname = #{record.nickname,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -204,12 +180,6 @@
       <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
       </if>
-      <if test="userRole != null">
-        user_role = #{userRole,jdbcType=INTEGER},
-      </if>
-      <if test="loginIp != null">
-        login_ip = #{loginIp,jdbcType=VARCHAR},
-      </if>
       <if test="nickname != null">
         nickname = #{nickname,jdbcType=VARCHAR},
       </if>
@@ -220,8 +190,6 @@
     update user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      user_role = #{userRole,jdbcType=INTEGER},
-      login_ip = #{loginIp,jdbcType=VARCHAR},
       nickname = #{nickname,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>

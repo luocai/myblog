@@ -9,6 +9,7 @@
     <result column="category" jdbcType="INTEGER" property="category" />
     <result column="click" jdbcType="INTEGER" property="click" />
     <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="cover" jdbcType="VARCHAR" property="cover" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.blog.pojo.ArticleWithBLOBs">
     <result column="article_content" jdbcType="LONGVARCHAR" property="articleContent" />
@@ -73,7 +74,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    article_id, article_title, publish_time, writer_id, category, click, state
+    article_id, article_title, publish_time, writer_id, category, click, state, cover
   </sql>
   <sql id="Blob_Column_List">
     article_content, summary
@@ -100,6 +101,8 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
+     ,
+    <include refid="Blob_Column_List" />
     from article
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -129,12 +132,12 @@
   <insert id="insert" parameterType="com.blog.pojo.ArticleWithBLOBs">
     insert into article (article_id, article_title, publish_time, 
       writer_id, category, click, 
-      state, article_content, summary
-      )
+      state, cover, article_content, 
+      summary)
     values (#{articleId,jdbcType=INTEGER}, #{articleTitle,jdbcType=VARCHAR}, #{publishTime,jdbcType=TIMESTAMP}, 
       #{writerId,jdbcType=INTEGER}, #{category,jdbcType=INTEGER}, #{click,jdbcType=INTEGER}, 
-      #{state,jdbcType=INTEGER}, #{articleContent,jdbcType=LONGVARCHAR}, #{summary,jdbcType=LONGVARCHAR}
-      )
+      #{state,jdbcType=INTEGER}, #{cover,jdbcType=VARCHAR}, #{articleContent,jdbcType=LONGVARCHAR}, 
+      #{summary,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.blog.pojo.ArticleWithBLOBs">
     insert into article
@@ -159,6 +162,9 @@
       </if>
       <if test="state != null">
         state,
+      </if>
+      <if test="cover != null">
+        cover,
       </if>
       <if test="articleContent != null">
         article_content,
@@ -188,6 +194,9 @@
       </if>
       <if test="state != null">
         #{state,jdbcType=INTEGER},
+      </if>
+      <if test="cover != null">
+        #{cover,jdbcType=VARCHAR},
       </if>
       <if test="articleContent != null">
         #{articleContent,jdbcType=LONGVARCHAR},
@@ -227,6 +236,9 @@
       <if test="record.state != null">
         state = #{record.state,jdbcType=INTEGER},
       </if>
+      <if test="record.cover != null">
+        cover = #{record.cover,jdbcType=VARCHAR},
+      </if>
       <if test="record.articleContent != null">
         article_content = #{record.articleContent,jdbcType=LONGVARCHAR},
       </if>
@@ -247,6 +259,7 @@
       category = #{record.category,jdbcType=INTEGER},
       click = #{record.click,jdbcType=INTEGER},
       state = #{record.state,jdbcType=INTEGER},
+      cover = #{record.cover,jdbcType=VARCHAR},
       article_content = #{record.articleContent,jdbcType=LONGVARCHAR},
       summary = #{record.summary,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
@@ -261,7 +274,8 @@
       writer_id = #{record.writerId,jdbcType=INTEGER},
       category = #{record.category,jdbcType=INTEGER},
       click = #{record.click,jdbcType=INTEGER},
-      state = #{record.state,jdbcType=INTEGER}
+      state = #{record.state,jdbcType=INTEGER},
+      cover = #{record.cover,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -287,6 +301,9 @@
       <if test="state != null">
         state = #{state,jdbcType=INTEGER},
       </if>
+      <if test="cover != null">
+        cover = #{cover,jdbcType=VARCHAR},
+      </if>
       <if test="articleContent != null">
         article_content = #{articleContent,jdbcType=LONGVARCHAR},
       </if>
@@ -304,6 +321,7 @@
       category = #{category,jdbcType=INTEGER},
       click = #{click,jdbcType=INTEGER},
       state = #{state,jdbcType=INTEGER},
+      cover = #{cover,jdbcType=VARCHAR},
       article_content = #{articleContent,jdbcType=LONGVARCHAR},
       summary = #{summary,jdbcType=LONGVARCHAR}
     where article_id = #{articleId,jdbcType=INTEGER}
@@ -315,22 +333,42 @@
       writer_id = #{writerId,jdbcType=INTEGER},
       category = #{category,jdbcType=INTEGER},
       click = #{click,jdbcType=INTEGER},
-      state = #{state,jdbcType=INTEGER}
+      state = #{state,jdbcType=INTEGER},
+      cover = #{cover,jdbcType=VARCHAR}
     where article_id = #{articleId,jdbcType=INTEGER}
   </update>
   
+   <select id="selectAll" resultMap="BaseResultMap">
+  		select
+  		<include refid="Base_Column_List" />
+  		,
+   		<include refid="Blob_Column_List" />
+  		from article
+  		where state = 1
+  		ORDER BY article_id desc
+  	</select>
+  	
   	<select id="selectLastArticle" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select
     article_id,article_title
     from article
-    where article_id = #{id} ORDER BY article_id desc limit 1;
+    where state = 1 and article_id = (select MIN(article_id) from article where article_id &gt; #{id} order by article_id desc);
   </select>
 
   <select id="selectNextArticle" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select
     article_id,article_title
     from article
-    where article_id = #{id} ORDER BY article_id ASC limit 1;
+    where state = 1 and article_id = (select MAX(article_id) from article where article_id &lt; #{id} order by article_id ASC);
+
   </select>
   
+  <select id="selectHotArticle" resultMap="BaseResultMap">
+  	select
+  	<include refid="Base_Column_List"></include>
+  	from article
+  	where state = 1
+  	ORDER BY click  desc
+  	limit 0, 3
+  </select>
 </mapper>

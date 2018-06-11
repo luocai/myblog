@@ -10,6 +10,7 @@
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="reply" jdbcType="VARCHAR" property="reply" />
     <result column="reply_state" jdbcType="INTEGER" property="replyState" />
+    <result column="reply_time" jdbcType="TIMESTAMP" property="replyTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -71,7 +72,7 @@
   </sql>
   <sql id="Base_Column_List">
     comment_id, user_id, comment_time, article_id, comment_content, user_name, reply, 
-    reply_state
+    reply_state, reply_time
   </sql>
   <select id="selectByExample" parameterType="com.blog.pojo.CommentExample" resultMap="BaseResultMap">
     select
@@ -106,10 +107,12 @@
   <insert id="insert" parameterType="com.blog.pojo.Comment">
     insert into comment (comment_id, user_id, comment_time, 
       article_id, comment_content, user_name, 
-      reply, reply_state)
+      reply, reply_state, reply_time
+      )
     values (#{commentId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{commentTime,jdbcType=TIMESTAMP}, 
       #{articleId,jdbcType=INTEGER}, #{commentContent,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
-      #{reply,jdbcType=VARCHAR}, #{replyState,jdbcType=INTEGER})
+      #{reply,jdbcType=VARCHAR}, #{replyState,jdbcType=INTEGER}, #{replyTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.blog.pojo.Comment">
     insert into comment
@@ -138,6 +141,9 @@
       <if test="replyState != null">
         reply_state,
       </if>
+      <if test="replyTime != null">
+        reply_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="commentId != null">
@@ -163,6 +169,9 @@
       </if>
       <if test="replyState != null">
         #{replyState,jdbcType=INTEGER},
+      </if>
+      <if test="replyTime != null">
+        #{replyTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -199,6 +208,9 @@
       <if test="record.replyState != null">
         reply_state = #{record.replyState,jdbcType=INTEGER},
       </if>
+      <if test="record.replyTime != null">
+        reply_time = #{record.replyTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -213,7 +225,8 @@
       comment_content = #{record.commentContent,jdbcType=VARCHAR},
       user_name = #{record.userName,jdbcType=VARCHAR},
       reply = #{record.reply,jdbcType=VARCHAR},
-      reply_state = #{record.replyState,jdbcType=INTEGER}
+      reply_state = #{record.replyState,jdbcType=INTEGER},
+      reply_time = #{record.replyTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -242,6 +255,9 @@
       <if test="replyState != null">
         reply_state = #{replyState,jdbcType=INTEGER},
       </if>
+      <if test="replyTime != null">
+        reply_time = #{replyTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where comment_id = #{commentId,jdbcType=INTEGER}
   </update>
@@ -253,7 +269,8 @@
       comment_content = #{commentContent,jdbcType=VARCHAR},
       user_name = #{userName,jdbcType=VARCHAR},
       reply = #{reply,jdbcType=VARCHAR},
-      reply_state = #{replyState,jdbcType=INTEGER}
+      reply_state = #{replyState,jdbcType=INTEGER},
+      reply_time = #{replyTime,jdbcType=TIMESTAMP}
     where comment_id = #{commentId,jdbcType=INTEGER}
   </update>
   
@@ -263,5 +280,4 @@
 	    from comment 
 	    order by comment_time desc
 	</select>
-	
 </mapper>

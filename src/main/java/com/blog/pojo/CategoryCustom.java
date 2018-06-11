@@ -1,16 +1,17 @@
 package com.blog.pojo;
 
-import java.util.Date;
-
 public class CategoryCustom extends Category {
 	
-	public int getArticleCount() {
-		return articleCount;
+	int articleCountPublished;
+
+	public int getArticleCountPublished() {
+		return articleCountPublished;
 	}
 
-	public void setArticleCount(int articleCount) {
-		this.articleCount = articleCount;
+	public void setArticleCountPublished(int articleCountPublished) {
+		this.articleCountPublished = articleCountPublished;
 	}
+	
+	
 
-	private int articleCount;
 }

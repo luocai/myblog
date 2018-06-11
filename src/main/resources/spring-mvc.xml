@@ -21,6 +21,9 @@
 	<!--扫包  -->
 	<context:component-scan base-package="com.blog.controller"/>
 	
+	<!--对上传文件功能的支持-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+	
 	<bean class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value = "org.springframework.web.servlet.view.JstlView"/>
 		<property name="prefix" value="/WEB-INF/"/>

@@ -1,19 +1,11 @@
 package com.blog.pojo;
 
 public class Category {
-    @Override
-	public String toString() {
-		return "Category [categoryId=" + categoryId + ", categoryName=" + categoryName + ", keywords=" + keywords
-				+ ", description=" + description + "]";
-	}
-
-	private Integer categoryId;
+    private Integer categoryId;
 
     private String categoryName;
 
-    private String keywords;
-
-    private String description;
+    private Integer articlecount;
 
     public Integer getCategoryId() {
         return categoryId;
@@ -31,19 +23,11 @@ public class Category {
         this.categoryName = categoryName == null ? null : categoryName.trim();
     }
 
-    public String getKeywords() {
-        return keywords;
+    public Integer getArticlecount() {
+        return articlecount;
     }
 
-    public void setKeywords(String keywords) {
-        this.keywords = keywords == null ? null : keywords.trim();
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
+    public void setArticlecount(Integer articlecount) {
+        this.articlecount = articlecount;
     }
 }

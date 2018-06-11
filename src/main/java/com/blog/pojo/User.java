@@ -7,10 +7,6 @@ public class User {
 
     private String password;
 
-    private Integer userRole;
-
-    private String loginIp;
-
     private String nickname;
 
     public Integer getUserId() {
@@ -35,22 +31,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
-    }
-
-    public Integer getUserRole() {
-        return userRole;
-    }
-
-    public void setUserRole(Integer userRole) {
-        this.userRole = userRole;
-    }
-
-    public String getLoginIp() {
-        return loginIp;
-    }
-
-    public void setLoginIp(String loginIp) {
-        this.loginIp = loginIp == null ? null : loginIp.trim();
     }
 
     public String getNickname() {

@@ -35,20 +35,18 @@ public class ArticleServiceImpl implements ArticleService {
 
 	@Override
 	public boolean updateArticle(Article article) {
-		ArticleExample articleExample = new ArticleExample();
-		Criteria criteria = articleExample.createCriteria();
-		criteria.andArticleIdEqualTo(article.getArticleId());
+	
 		
-		return articleMapper.updateByExample(article, articleExample) > 0;
+		return articleMapper.updateByPrimaryKeySelective(article) > 0;
 	}
 
 	@Override
 	public List<Article> selectAll() {
-		ArticleExample articleExample = new ArticleExample();
-		Criteria criteria = articleExample.createCriteria();
-		criteria.andArticleIdIsNotNull();
+//		ArticleExample articleExample = new ArticleExample();
+//		Criteria criteria = articleExample.createCriteria();
+//		criteria.andArticleIdIsNotNull();
 		
-		return articleMapper.selectByExample(articleExample);
+		return articleMapper.selectAll();
 	}
 
 //	@Override
@@ -102,10 +100,11 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
-	public List<Article> seletcByCategory(Integer categoryId) {
+	public List<Article> selectByCategory(Integer categoryId) {
 		ArticleExample articleExample = new ArticleExample();
 		Criteria criteria = articleExample.createCriteria();
 		criteria.andCategoryEqualTo(categoryId);
+		criteria.andStateEqualTo(1);
 		
 		return articleMapper.selectByExample(articleExample);
 	}
@@ -120,6 +119,22 @@ public class ArticleServiceImpl implements ArticleService {
 	public Article selectNextArticle(Integer id) {
 		
 		return articleMapper.selectNextArticle(id);
+	}
+	@Override
+	public List<Article> selectHotArticle() {
+		
+		return articleMapper.selectHotArticle();
+	}
+	@Override
+	public List<Article> selectByTitlePublished(String search) {
+		
+		ArticleExample articleExample = new ArticleExample();
+		Criteria criteria = articleExample.createCriteria();
+		criteria.andArticleTitleLike("%"+search+"%");
+		criteria.andStateEqualTo(1);
+		
+		return articleMapper.selectByExample(articleExample);
+		
 	}
 
 }

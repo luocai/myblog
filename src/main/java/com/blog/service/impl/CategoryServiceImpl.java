@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.blog.mapper.ArticleMapper;
 import com.blog.mapper.CategoryMapper;
 import com.blog.pojo.Category;
-import com.blog.pojo.CategoryCustom;
 import com.blog.pojo.CategoryExample;
 import com.blog.service.CategoryService;
 
